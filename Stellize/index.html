@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="就労継続支援B型事業所向けのクリエイティブ講座・Web制作支援を提供するStellize。選択理論心理学に基づくSNS講座で、利用者の工賃向上と自己肯定感の醸成を支援します。">
+  <title>Stellize - 自分の価値に、気づく。</title>
+
+  <!-- OGP / SNSシェア対応：og:image・og:urlは仮値。本番ドメイン確定と専用画像（1200x630）準備後に差し替え -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Stellize">
+  <meta property="og:title" content="Stellize - 自分の価値に、気づく。">
+  <meta property="og:description" content="就労継続支援B型事業所向けのクリエイティブ講座・Web制作支援を提供するStellize。選択理論心理学に基づくSNS講座で、利用者の工賃向上と自己肯定感の醸成を支援します。">
+  <meta property="og:url" content="https://stellize.example.com/">
+  <meta property="og:image" content="https://stellize.example.com/assets/images/bh3ieUsE.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stellize - 自分の価値に、気づく。">
+  <meta name="twitter:description" content="就労継続支援B型事業所向けのクリエイティブ講座・Web制作支援を提供するStellize。選択理論心理学に基づくSNS講座で、利用者の工賃向上と自己肯定感の醸成を支援します。">
+  <meta name="twitter:image" content="https://stellize.example.com/assets/images/bh3ieUsE.jpeg">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260720">
+
+  <!-- Googleアナリティクス（GA4）土台。TODO: G-XXXXXXXXXX を実測定IDに差し替えると計測開始。
+       測定ID未設定の間はイベント送信をスキップする（下のgtag実装側で判定） -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.STELLIZE_GA_ID = "G-XXXXXXXXXX"; // TODO: 実測定IDに差し替え
+    if (window.STELLIZE_GA_ID && window.STELLIZE_GA_ID !== "G-XXXXXXXXXX") {
+      gtag('js', new Date());
+      gtag('config', window.STELLIZE_GA_ID);
+    }
+  </script>
+
+  <!-- FAQPage構造化データ（ホーム抜粋の4問と同期。faq.htmlの全文はfaq.html側の掲載内容が正） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "施設での導入を検討していますが、どうすればいいですか?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "まずはお問い合わせフォームよりご連絡ください。施設の状況やご要望をお伺いし、最適なプランをご提案いたします。説明会や体験講座も実施していますので、お気軽にご相談ください。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "導入までにどのくらいの期間がかかりますか?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "お問い合わせから導入まで、通常1〜2ヶ月程度です。説明会、体験講座、スタッフ研修などを経て、準備が整ってから講座を開始します。急ぎの場合はご相談ください。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "費用について教えてください",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "施設の規模や受講者数、サポート内容によって異なります。詳しくはお問い合わせの際にご説明いたします。予算に応じた柔軟なプラン設計も可能ですので、ご相談ください。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "SNSを使ったことがなくても大丈夫ですか?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、大丈夫です。基礎から丁寧にお教えしますので、初めての方でも安心して始められます。アカウントの作り方から、投稿の仕方まで、一つずつステップを踏んで学んでいきますので、ご安心ください。"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+ <!-- ローディング：ロゴ線画 + グワんグワん -->
+<div id="loader" class="loader loader--crazy">
+  <div class="loader-bg">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <div class="loader-inner">
+    <!-- 線画ロゴ（簡易：S） -->
+    <svg class="logo-draw" viewBox="0 0 220 220" role="img" aria-label="Stellize loading logo">
+      <path class="logo-path"
+        d="M155 55
+           C130 30, 70 35, 70 75
+           C70 110, 120 105, 120 135
+           C120 170, 70 175, 60 150"
+        fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="logo-path logo-path-2"
+        d="M160 150
+           C150 185, 100 195, 75 175"
+        fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <p class="loader-text">Stellize</p>
+    <p class="loader-sub">Loading...</p>
+  </div>
+</div>
+
+  <!-- ヘッダー（id付与 + class 追加） -->
+  <header class="header header--floating" id="siteHeader">
+    <div class="header-container">
+      <a href="index.html" class="logo">Stellize</a>
+      <nav class="nav">
+        <a href="index.html">トップ</a>
+        <a href="#about">企業情報</a>
+        <a href="#business">事業紹介</a>
+        <a href="blog.html">ブログ</a>
+        <a href="faq.html">よくある質問</a>
+        <a href="#contact" class="btn-contact">無料相談を予約する</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ヒーロー（画像の左余白にテキストをオーバーレイ） -->
+  <section class="hero hero--overlay">
+    <div class="hero-banner">
+      <img src="assets/images/hero.jpg" alt="福祉施設のアトリエで、パソコンやスマホを使い穏やかにSNS発信や制作に取り組む人々" class="hero-bg" width="1821" height="864">
+      <span class="hero-scrim" aria-hidden="true"></span>
+      <div class="container">
+        <div class="hero-text">
+          <h1>価値を咲かせ、<br><span>共に生きる。</span></h1>
+          <p>社会に貢献したい。自分らしく働きたい。<br>その想いを実現する舞台を、Stellizeはつくります。</p>
+          <div class="hero-buttons">
+            <a href="#business" class="btn btn-primary">事業を見る</a>
+            <a href="#contact" class="btn btn-secondary">導入の相談をする</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 事業紹介（ヒーロー直後に配置） -->
+  <section id="business" class="section business-section">
+    <div class="container">
+      <p class="label reveal">Our Business</p>
+      <h2 class="reveal">事業紹介</h2>
+
+      <div class="business-cards stagger">
+        <div class="card hover-float">
+          <!-- 実績確定後: hiddenを外して「◯施設で導入」等を記載 -->
+          <p class="card-badge" hidden>導入実績 準備中</p>
+          <h3>就労支援向けクリエイティブ講座</h3>
+          <p>利用者さん向けのクリエイティブ講座。「得意」や「好き」を仕事につなげ、スキルアップと工賃向上・通所率向上を支援します。オンライン・訪問で選択可能。</p>
+          <a href="course.html" class="btn-link">詳しくはこちら <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="card hover-float">
+          <!-- 実績確定後: hiddenを外して「◯施設で導入」等を記載 -->
+          <p class="card-badge" hidden>導入実績 準備中</p>
+          <h3>SNS・生産活動研修</h3>
+          <p>施設の生産活動をSNSで発信し、"売れる"活動へ。利用者が主役になって発信し、工賃向上とやりがいの醸成につなげる実践型研修です。</p>
+          <a href="training.html" class="btn-link">詳しくはこちら <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="card hover-float">
+          <!-- 実績確定後: hiddenを外して「◯社支援」等を記載 -->
+          <p class="card-badge" hidden>支援実績 準備中</p>
+          <h3>Webマーケティング制作「G-PaC」</h3>
+          <p>月額5万円で、HP・動画・SNS・チラシ・広告まで、Webマーケティング施策をまるごと実現。通常月間40〜50万円かかる施策を、事業の段階に応じて柔軟に対応します。</p>
+          <a href="gpac.html" class="btn-link">詳しくはこちら <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 導入ストーリー漫画（掲載スロット）
+       漫画（施設向け導入ストーリー）が用意できたら:
+       1. section の hidden 属性を外す
+       2. .manga-grid 内に <img> を4枚入れる（alt にセリフ全文を記載）
+       それまでは非表示のまま何もレンダリングされない -->
+  <section id="story-manga" class="section" hidden>
+    <div class="container">
+      <p class="label reveal">Story</p>
+      <h2 class="reveal">ある事業所の導入ストーリー</h2>
+      <div class="manga-grid stagger">
+        <!-- <img src="assets/images/manga-1.webp" alt="..." width="1080" height="760" loading="lazy" decoding="async"> ×4 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT（parallax対象に class付与） -->
+  <section id="about" class="section about-section parallax-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <p class="label reveal">Why Stellize</p>
+          <h2 class="reveal">なぜ、Stellizeなのか</h2>
+
+          <div class="philosophy-box reveal">
+            <p class="philosophy-label">経営理念</p>
+            <h3>価値を咲かせ、共に生きる</h3>
+            <p class="philosophy-description">すべての人が、自分の価値に気づき、社会で輝ける場所を。</p>
+          </div>
+
+          <div class="mission reveal">
+            <h3>Stellizeのミッション</h3>
+            <p class="mission-statement">ドロップアウトを、なくす。</p>
+            <p class="mission-tagline">〜誰もが真価があり、その真価を発揮できる舞台を、自分で作ることができる〜</p>
+            <p class="mission-lead">学校で、職場で、社会で——一度つまずいただけで、居場所を失ってしまう人がいます。<br>でも、それは力がないからではありません。まだ、合う舞台に出会えていないだけ。</p>
+            <div class="mission-items stagger">
+              <div class="mission-item hover-float">
+                <h4>誰もが、真価を持っている</h4>
+                <p>障害の有無でも、才能の差でもなく、<br>すべての人に発揮されるべき価値がある。</p>
+              </div>
+              <div class="mission-item hover-float">
+                <h4>舞台は、自分で作れる</h4>
+                <p>スキルと発信する力があれば、<br>活躍する場所は自分の手で作り出せる。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="choice-theory reveal">
+            <h3>選択理論心理学を活用したSNS講座</h3>
+            <p class="choice-theory-lead">Stellizeのアプローチは、選択理論心理学に基づいています。</p>
+
+            <div class="choice-theory-box hover-float">
+              <h4>選択理論心理学とは？</h4>
+              <p>選択理論心理学は、アメリカの精神科医ウィリアム・グラッサー博士が提唱した心理学です。<strong>「人間のすべての行動は、自分が選択している」</strong>という考え方を軸に、外部からのコントロールではなく、<strong>内発的な動機</strong>を大切にします。</p>
+            </div>
+
+            <div class="choice-theory-points stagger">
+              <div class="point-item hover-float">
+                <h4><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-lightbulb"/></svg>主体性を育む</h4>
+                <p>「やらされる」ではなく、「やりたい」を引き出すことで、自分から行動する力を養います。</p>
+              </div>
+              <div class="point-item hover-float">
+                <h4><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-sprout"/></svg>内発的動機を大切に</h4>
+                <p>外からの圧力ではなく、自分の内側から湧き上がる「やってみたい」という気持ちを尊重します。</p>
+              </div>
+              <div class="point-item hover-float">
+                <h4><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-target"/></svg>就労移行の一助に</h4>
+                <p>SNSを通じて「できた」を積み重ね、自己効力感を高めることで、就労移行への自信につなげます。</p>
+              </div>
+            </div>
+
+            <p class="choice-theory-summary">この心理学をベースにしたSNS講座だからこそ、利用者一人ひとりが「自分らしく発信する力」を身につけ、社会での活躍につながる確かな一歩を踏み出せます。</p>
+          </div>
+
+          <div class="story reveal">
+            <h3>なぜ、この事業を？</h3>
+            <div class="story-grid">
+              <div class="founder-info hover-float">
+                <img src="assets/images/r90D74yJ.jpeg" alt="Stellize代表 菊野玲" class="founder-image" loading="lazy" decoding="async" width="684" height="1024">
+                <p class="founder-name">Stellize代表　菊野玲</p>
+              </div>
+              <div class="story-body">
+                <p class="story-text">フリーランス時代、仕事ができなくなった私を救ってくれたのは、クライアントからの温かい一言でした。</p>
+                <p class="story-highlight">「誰かの役に立てている」という実感が、人生を前に進めてくれる。</p>
+                <p class="story-text">就労支援の現場でも同じです。力がないのではなく、「力を発揮できる場」がないだけ。</p>
+                <p class="story-text">Stellizeが本当になくしたいのは、<strong>「ドロップアウト」</strong>です。学校でも、仕事でも、社会でも——一度つまずいただけで居場所を失ってしまう人がいます。もう一度自分の価値に気づき、活躍できる舞台をつくること。それが私たちの原点であり、企業理念です。</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 実績数字（フェーズ2-11-2：値はmain.jsのSTELLIZE_STATSで一元管理。
+       事業資料の完成後、実データに差し替えるとCountUpアニメーションで表示される -->
+  <section id="results" class="section stats-section">
+    <div class="container">
+      <p class="label reveal">Our Results</p>
+      <h2 class="reveal">数字で見るStellize</h2>
+      <div class="stats-grid stagger" id="statsGrid"></div>
+      <p class="note text-center reveal">※ 実績数値は現在集計中です。準備が整い次第、順次公開します。</p>
+    </div>
+  </section>
+
+  <!-- 受講者・導入施設の声（フェーズ2-11-2：main.jsのSTELLIZE_VOICESで一元管理） -->
+  <section id="voices" class="section voices-section">
+    <div class="container">
+      <p class="label reveal">Voices</p>
+      <h2 class="reveal">受講者・導入施設の声</h2>
+      <div class="voices-grid stagger" id="voicesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ホームFAQ抜粋（フェーズ3-14：詳細はfaq.htmlへ誘導） -->
+  <section id="faq" class="section bg-light">
+    <div class="container">
+      <p class="label reveal">FAQ</p>
+      <h2 class="reveal">よくある質問</h2>
+      <div class="faq-excerpt-list reveal">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <p class="accordion-question">施設での導入を検討していますが、どうすればいいですか?</p>
+            <div class="accordion-icon" aria-hidden="true">+</div>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>まずはお問い合わせフォームよりご連絡ください。施設の状況やご要望をお伺いし、最適なプランをご提案いたします。説明会や体験講座も実施していますので、お気軽にご相談ください。</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <p class="accordion-question">導入までにどのくらいの期間がかかりますか?</p>
+            <div class="accordion-icon" aria-hidden="true">+</div>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>お問い合わせから導入まで、通常1〜2ヶ月程度です。説明会、体験講座、スタッフ研修などを経て、準備が整ってから講座を開始します。急ぎの場合はご相談ください。</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <p class="accordion-question">費用について教えてください</p>
+            <div class="accordion-icon" aria-hidden="true">+</div>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>施設の規模や受講者数、サポート内容によって異なります。詳しくはお問い合わせの際にご説明いたします。予算に応じた柔軟なプラン設計も可能ですので、ご相談ください。</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <p class="accordion-question">SNSを使ったことがなくても大丈夫ですか?</p>
+            <div class="accordion-icon" aria-hidden="true">+</div>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>はい、大丈夫です。基礎から丁寧にお教えしますので、初めての方でも安心して始められます。アカウントの作り方から、投稿の仕方まで、一つずつステップを踏んで学んでいきますので、ご安心ください。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="faq-more reveal"><a href="faq.html" class="btn-link">すべての質問を見る <span class="arrow" aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  <!-- 会社概要（フェーズ3-12：所在地・設立はコンテンツ提供待ち） -->
+  <section id="company" class="section company-section">
+    <div class="container">
+      <p class="label reveal">Company</p>
+      <h2 class="reveal">会社概要</h2>
+      <div class="company-table reveal">
+        <dl>
+          <div class="company-row">
+            <dt>社名</dt>
+            <dd>Stellize合同会社</dd>
+          </div>
+          <div class="company-row">
+            <dt>代表者</dt>
+            <dd>菊野 玲</dd>
+          </div>
+          <div class="company-row">
+            <dt>所在地</dt>
+            <!-- TODO: 所在地はコンテンツ提供後に差し替え -->
+            <dd class="pending">準備中</dd>
+          </div>
+          <div class="company-row">
+            <dt>設立</dt>
+            <!-- TODO: 設立年月はコンテンツ提供後に差し替え -->
+            <dd class="pending">準備中</dd>
+          </div>
+          <div class="company-row">
+            <dt>事業内容</dt>
+            <dd>就労継続支援B型事業所向けクリエイティブ講座の提供<br>Webマーケティング制作「G-PaC」</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <!-- CTA 3階層（フェーズ4-17）
+       ①資料DL ②無料相談 ③紹介。資料PDF・Calendly URLは確定後に差し替え -->
+  <section id="contact" class="section cta-section">
+    <div class="container">
+      <h2 class="reveal">Stellizeが気になった方へ</h2>
+      <p class="reveal delay-1">まずは知りたい方も、相談したい方も。<br>あなたのペースに合わせた入り口をご用意しました。</p>
+
+      <div class="cta-tiers reveal delay-2">
+        <!-- ① 資料ダウンロード -->
+        <div class="cta-tier">
+          <span class="tier-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-document"/></svg></span>
+          <h3>まず資料を見る</h3>
+          <p>講座・研修の内容や進め方をまとめた資料をお送りします。メールアドレスのご入力だけで完了します。</p>
+          <!-- TODO: 資料DL用のフォーム/導線。現状はcontact.htmlへ種別付きで遷移（UTM付与） -->
+          <a href="contact.html?type=document&utm_source=hp&utm_medium=cta&utm_campaign=document"
+             class="btn btn-secondary" data-cta="document">資料をダウンロード</a>
+        </div>
+
+        <!-- ② 無料相談（主導線） -->
+        <div class="cta-tier cta-tier--primary">
+          <span class="tier-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-users"/></svg></span>
+          <h3>無料相談を予約する</h3>
+          <p>施設の状況をお聞きし、最適なプランをご提案します。オンラインで気軽にご相談いただけます。</p>
+          <!-- TODO: Calendly等の日程調整ツール確定後にhrefを差し替え -->
+          <a href="contact.html?type=consult&utm_source=hp&utm_medium=cta&utm_campaign=consult"
+             class="btn btn-primary" data-cta="consult">無料相談を予約する</a>
+        </div>
+
+        <!-- ③ 紹介 -->
+        <div class="cta-tier">
+          <span class="tier-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-sparkle"/></svg></span>
+          <h3>同業の方に共有する</h3>
+          <p>お知り合いの施設様にも役立ちそうなら、ぜひご共有ください。URLをコピーして、メール等でお渡しいただけます。</p>
+          <button type="button" class="tier-btn" id="shareCopyBtn"
+                  data-cta="share" data-share-url="https://stellize.example.com/">
+            URLをコピー
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Stellize合同会社</h3>
+                    <p>自分の価値に、気づく。<br>誰もが自分らしく働ける社会へ。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>ページ</h4>
+                    <a href="index.html">トップ</a>
+                    <a href="index.html#about">企業情報</a>
+                    <a href="index.html#business">事業紹介</a>
+                </div>
+                <div class="footer-col">
+                    <h4>サービス</h4>
+                    <a href="course.html">クリエイティブ講座</a>
+                    <a href="training.html">SNS・生産活動研修</a>
+                    <a href="gpac.html">G-PaC</a>
+                </div>
+                <div class="footer-col">
+                    <h4>情報</h4>
+                    <a href="blog.html">ブログ</a>
+                    <a href="faq.html">よくある質問</a>
+                    <a href="contact.html">お問い合わせフォーム</a>
+                    <a href="privacy.html">プライバシーポリシー</a>
+                    <a href="tokushoho.html">特定商取引法に基づく表記</a>
+                </div>
+                <div class="footer-col">
+                    <h4>SNS</h4>
+                    <!-- TODO: Instagram実URL確定後にhrefを差し替え -->
+                    <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="#" class="coming-soon">Threads <span>Coming Soon</span></a>
+                    <a href="#" class="coming-soon">X（旧Twitter） <span>Coming Soon</span></a>
+                    <a href="#" class="coming-soon">Facebook <span>Coming Soon</span></a>
+                    <a href="#" class="coming-soon">TikTok <span>Coming Soon</span></a>
+                    <a href="#" class="coming-soon">公式LINE <span>Coming Soon</span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Stellize. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js?v=20260720"></script>
+<div id="pageTransition" class="page-transition" aria-hidden="true"></div>
+  </body>
+</html>
